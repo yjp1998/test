@@ -550,8 +550,7 @@
 
       
         
-          <p>题目：<br>function Foo() {<br>  getName = function(){ alert(1); };<br>  return this;<br>}<br>Foo.getName = function() { alert(2); };<br>Foo.prototype.getName = function(){ alert(3); };<br>var getName = function() { alert(4); };<br>function getName(){ alert(5); };</p>
-<p>Foo.getName(); //<br>getName(); //<br>Foo().getName(); //<br>getName(); //<br>new (Foo.getName)(); //<br>(new Foo()).getName(); //</p>
+          <p>涉及的知识点比较多：声明提升和提升优先级、构造函数返回值问题、js运算符优先级、实例化对象的属性访问优先级</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/03/15/%E4%B8%80%E9%81%93%E5%8F%97%E7%9B%8A%E5%8C%AA%E6%B5%85%E7%9A%84%E5%A5%87%E6%80%AA%E9%9D%A2%E8%AF%95%E9%A2%98/#more" rel="contents">

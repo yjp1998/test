@@ -431,7 +431,7 @@
       
         
           
-            <p><a target="_blank" rel="noopener" href="https://yjp1998.github.io/taobaoPage/index.html">淘宝页面</a></p>
+            <p>学习html和css之后自己模仿淘宝网的布局练习<br><a target="_blank" rel="noopener" href="https://yjp1998.github.io/taobaoPage/index.html">淘宝页面</a></p>
 
           
         
@@ -552,6 +552,7 @@
         
           
             <span id="more"></span>
+
 <p>题目：<br>function Foo() {<br>  getName = function(){ alert(1); };<br>  return this;<br>}<br>Foo.getName = function() { alert(2); };<br>Foo.prototype.getName = function(){ alert(3); };<br>var getName = function() { alert(4); };<br>function getName(){ alert(5); };</p>
 <p>Foo.getName(); //<br>getName(); //<br>Foo().getName(); //<br>getName(); //<br>new (Foo.getName)(); //<br>(new Foo()).getName(); //</p>
 <p>答案是：2 4 1 1 2 3<br>第一问：Foo调用构造函数上的方法 ==&gt; 输出2<br>第二问：getName()在全局下调用，函数声明有一个特点，就是会提升到当前代码的顶部，然后到变量声明，它的优先级没函数声明高，所以等函数声明提升完之后再到变量声明，所以代码可以理解成：<br>function getName() { alert(5) };<br>var getName;<br>getName = function() { alert(4) }<br>所以 ==&gt; 输出4<br>第三问：任何函数只要使用 new 操作符调用就是构造函数，而不使用 new 操作符调用就是普通函数。所以这里Foo()就只是普通函数调用，它里面的 getName 由于没有变量声明，所以它是全局对象的一个方法，所以 ==&gt; 输出1<br>第四问：Foo里的getName被调用，它是全局对象的方法，所以覆盖了前面的声明，所以 ==&gt; 输出1<br>第五问：将Foo.getName当作构造函数，然后运行它，所以 ==&gt; 输出2<br>第六问：构造函数的返回值分为两种情况：第一种，无返回值，执行后结果就是实例对象；第二种，有返回值时，分两种情况，返回值为基本类型，则跟无返回值的情况一样处理；返回值为引用类型，则返回该引用数据。new Foo()执行后，返回this，this在构造函数中指向实例对象，属性方法访问优先级：对象自身 &gt; 构造函数 &gt; 原型 &gt; 父级;所以 ==&gt; 输出3</p>
@@ -676,22 +677,14 @@
 
       
         
-          
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://yjp1998.github.io/taobaoPage/index.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-          
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/03/12/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

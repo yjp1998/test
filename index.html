@@ -609,132 +609,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/16/%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="apen的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/16/%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/" itemprop="url">理解函数声明与函数表达式优先级问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T14:37:44+08:00">
-                2021-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <span id="more"></span>
-<p>函数声明: function foo() {}<br>函数表达式: var foo = function() {}</p>
-<p>函数声明会在一段代码预载完成后，会把<strong>函数声明提前到代码的前面执行</strong>，以便在代码段的任何地方调用</p>
-<p>而函数表达式，就是把一个匿名函数赋给一个变量，以后想要调用这个函数时，就直接调用这个变量即可</p>
-<p>函数表达式没有函数声明的优点，即它<strong>不能先调用再来声明</strong>。<br>原理就是函数表达式是把函数赋给一个变量作为它的值，而变量在没有声明之前就调用是要出错的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">var foo &#x3D; function() &#123;</span><br><span class="line">  console.log(3)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">var foo &#x3D; function() &#123;</span><br><span class="line">  console.log(4)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line">输出的结果是: 2 2 3 4</span><br></pre></td></tr></table></figure>
-<p>改变一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">var foo &#x3D; function() &#123;</span><br><span class="line">  console.log(3)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(4)</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line">输出的结果是: 4 4 3 3</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/15/this%E6%8C%87%E5%90%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,6 +684,130 @@
 <p>var person1 = new Person(‘person1’)<br>person1.foo()()<br>person2.foo()()<br>输出<br>‘person1’<br>‘window’<br>‘person2’<br>‘window’<br>有关箭头函数<br>它里面的 this 是由外层作用域来决定的，且指向函数定义时的 this 而并非执行时。<br>箭头函数中没有 this 绑定，必须通过查找作用域链来决定其值，如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，否则，this 为 undefined。<br>var obj = {<br>  name: ‘obj’,<br>  foo1: () =&gt; {<br>    console.log(this.name)<br>  },<br>  foo2: function () {<br>    console.log(this.name)<br>    return () =&gt; {<br>      console.log(this.name)<br>    }<br>  }<br>}<br>var name = ‘window’<br>obj.foo1()<br>obj.foo2()()<br>输出<br>‘window’ // 外层作用域是 window，对象 obj 不属于作用域<br>‘obj’ // obj.foo2() 不是箭头函数，this 调用它的 obj 对象<br>‘obj’ // 返回的是箭头函数，this 由外层作用域决定，也就是函数 foo2，this指向与foo2的this一样，也就是obj<br>注意：作用域只有全局作用域 window 和局部作用域函数（在没有块级作用域之前），对象字面量的写法并不会产生自己的作用域。<br>构造函数对象中普通函数与箭头函数区别：<br>var name = ‘window’<br>function Person (name) {<br>  this.name = name<br>  this.foo1 = function () {<br>    console.log(this.name)<br>  }<br>  this.foo2 = () =&gt; {<br>    console.log(this.name)<br>  }<br>}<br>var person2 = {<br>  name: ‘person2’,<br>  foo2: () =&gt; {<br>    console.log(this.name)<br>  }<br>}<br>var person1 = new Person(‘person1’)<br>person1.foo1()<br>person1.foo2()<br>person2.foo2()<br>输出<br>person1<br>person1<br>// 外层作用域是函数 Person，且这个是构造函数，并且使用了 new 来生成对象 person1，所以指向person1<br>window<br>// person 为对象字面量，不会产生自己的作用域，所以 this 指向 window<br>记住，this 由外层作用域决定，且指向函数定义时的 this 而非执行时。<br>箭头函数的 this 无法通过 bind、call、apply 来修改，但可以通过改变作用域中 this 的指向来间接修改。<br>var name = ‘window’<br>function Person (name) {<br>  this.name = name<br>  this.obj = {<br>    name: ‘obj’,<br>    foo1: function () {<br>      return function () {<br>        console.log(this.name)<br>      }<br>    },<br>    foo2: function () {<br>      return () =&gt; {<br>        console.log(this.name)<br>      }<br>    }<br>  }<br>}<br>var person1 = new Person(‘person1’)<br>var person2 = new Person(‘person2’)<br>person1.obj.foo1()() // ‘window’<br>person1.obj.foo1.call(person2)() // ‘window’<br>person1.obj.foo1().call(person2) // ‘person2’<br>person1.obj.foo2()() // ‘obj’<br>// 箭头函数的 this 由第一层普通函数决定，第一层函数最后由obj调用<br>person1.obj.foo2.call(person2)() // ‘person2’<br>person1.obj.foo2().call(person2) // ‘obj’<br>this 永远指向最后调用它的那个对象。<br>function foo() {<br>  console.log( this.a );<br>}<br>var a = 2;<br>(function(){<br>  “use strict”;<br>  foo();<br>})();<br>输出<br>2<br>// 使用了”use strict”开启严格模式会使得”use strict”以下代码的this为undefined，<br>// 也就是这里的立即执行函数中的this是undefined。<br>// 但是调用foo()函数的依然是window，所以foo()中的this依旧是window，所以会打印出2。<br>// 如果使用 this.foo() 调用的话就报错</p>
 
           
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/16/%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="apen的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/16/%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/" itemprop="url">理解函数声明与函数表达式优先级问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T14:37:44+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>弄清关于声明提升以的一些疑惑</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/16/%E7%90%86%E8%A7%A3%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E%E4%B8%8E%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
